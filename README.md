@@ -1,5 +1,5 @@
-# expl-the-one
-🚀 EXPL.ONE The most based community website on the internet 💎💰🌙 1000x vibes | Meme energy | Open-source hype machine | WAGMI 🦍
+# expl-the-one 🚀 EXPL.ONE
+⚡ The most based community website on the internet 💎💰🌙 1000x vibes | Meme energy | Open-source hype machine | WAGMI 🦍
 
 Welcome to **EXPL.ONE**, the most *degenerate*, *beautifully chaotic*, and *community-powered* website in the galaxy.  
 This isn’t a “project” - it’s a **movement**. It’s memes, vibes, rockets, and diamond hands all coded into one cosmic experience. 💎🚀  
