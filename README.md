@@ -8,6 +8,7 @@ This isn’t a “project” - it’s a **movement**. It’s memes, vibes, rocke
 
 ## 🌍 Community Vibes
 This repo is **100% public** and **1000% open**.  
+
 If you have:
 - An idea 💡  
 - A meme 🐸
