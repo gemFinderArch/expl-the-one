@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPL.ONE - PUMP IT 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="20" font-size="20">🚀</text></svg>'), auto;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f5ff, #ff00ff, #ffff00, #00ff00);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 80px rgba(0,245,255,0.5);
+            margin-bottom: 20px;
+            letter-spacing: 10px;
+            animation: pulse 2s ease-in-out infinite, gradientShift 3s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tagline {
+            font-size: 32px;
+            margin: 20px 0;
+            color: #00f5ff;
+            text-shadow: 0 0 20px rgba(0,245,255,0.8);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 25px 60px;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff00ff, #00f5ff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 30px 10px;
+            box-shadow: 0 0 40px rgba(255,0,255,0.6);
+            transition: all 0.3s;
+            border: 3px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: buttonGlow 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(255,0,255,0.6); }
+            50% { box-shadow: 0 0 80px rgba(0,245,255,0.8), 0 0 120px rgba(255,0,255,0.6); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 100px rgba(255,0,255,1);
+        }
+
+        .meme-zone {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .meme-card {
+            background: rgba(255,255,255,0.05);
+            border: 3px solid #00f5ff;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meme-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0,245,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .meme-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: #ff00ff;
+            box-shadow: 0 0 50px rgba(255,0,255,0.8);
+        }
+
+        .meme-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .meme-text {
+            font-size: 24px;
+            font-weight: 900;
+            color: #00f5ff;
+            text-transform: uppercase;
+            margin: 15px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,0,255,0.2), rgba(0,245,255,0.2));
+            border: 2px solid #fff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #ffff00;
+            text-shadow: 0 0 20px rgba(255,255,0,0.8);
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #fff;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .rocket {
+            position: fixed;
+            font-size: 60px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: rocketFly 3s ease-out forwards;
+        }
+
+        @keyframes rocketFly {
+            0% {
+                transform: translate(0, 0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(1000px, -1000px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .explosion {
+            position: fixed;
+            font-size: 100px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .ticker {
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            border-top: 3px solid #00f5ff;
+            border-bottom: 3px solid #ff00ff;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .feature-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            border: 3px solid #00f5ff;
+        }
+
+        .feature-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .pump-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pump-modal-content {
+            background: linear-gradient(45deg, #1a0a2e, #16213e, #0f3460);
+            border: 5px solid #00f5ff;
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 100px rgba(0,245,255,0.8);
+            animation: modalPop 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .pump-modal-title {
+            font-size: 48px;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .pump-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .pump-coin-btn {
+            padding: 25px;
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff00ff, #00f5ff);
+            color: #fff;
+            border: 3px solid #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .pump-coin-btn:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 50px rgba(255,0,255,1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #ff00ff;
+            transform: rotate(90deg);
+        }
+
+        .hodl-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9998;
+            pointer-events: none;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hodl-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hodl-overlay.active {
+            display: block;
+            animation: fadeInOut 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 100px;
+            background: rgba(0,0,0,0.5);
+            border-top: 3px solid #00f5ff;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 40px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3) rotate(360deg);
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 60px; }
+            .tagline { font-size: 24px; }
+            .cta-button { font-size: 20px; padding: 20px 40px; }
+            .stat-number { font-size: 36px; }
+            .pump-modal-content { padding: 40px 20px; }
+            .pump-buttons { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <!-- PUMP IT Modal -->
+    <div class="pump-modal" id="pumpModal">
+        <div class="pump-modal-content">
+            <span class="close-modal" onclick="closePumpModal()">×</span>
+            <div class="pump-modal-title">🚀 CHOOSE YOUR PUMP 🚀</div>
+            <div class="pump-buttons">
+                <button class="pump-coin-btn" onclick="pumpCoin('EXPL')">💎 EXPL</button>
+                <button class="pump-coin-btn" onclick="pumpCoin('BTC')">₿ BTC</button>
+                <button class="pump-coin-btn" onclick="pumpCoin('ETH')">⟠ ETH</button>
+                <button class="pump-coin-btn" onclick="pumpCoin('DOGE')">🐕 DOGE</button>
+                <button class="pump-coin-btn" onclick="pumpCoin('PEPE')">🐸 PEPE</button>
+                <button class="pump-coin-btn" onclick="pumpCoin('SOL')">☀️ SOL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HODL Overlay -->
+    <div class="hodl-overlay" id="hodlOverlay">
+        <img src="hodl-spartans.gif" alt="HODL">
+    </div>
+    
+    <div class="ticker">
+        <div class="ticker-content">
+            🚀 SEND YOUR FAV COIN TO THE MOON 💎 DIAMOND HANDS ONLY 💎 WAGMI 🔥 LFG 🌙 1000X INCOMING 📈 NOT FINANCIAL ADVICE 🚀 DYOR 💰 GM FRENS 🦍 APES TOGETHER STRONG 💪
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="logo">PUMP IT</div>
+            <div class="tagline">soon...</div>
+            
+            <!-- <a href="#" class="cta-button" onclick="openPumpModal(event)">🚀 PUMP IT</a> -->
+            <a href="#" class="cta-button" onclick="showHodlGif(event)">EXPL.ONE</a>
+        </div>
+
+        <!-- <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" style="font-size: 224px;">∞</div>
+                <div class="stat-label">MOON POTENTIAL</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000X</div>
+                <div class="stat-label">GAINS INCOMING</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">💎</div>
+                <div class="stat-label">DIAMOND HANDS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">🚀</div>
+                <div class="stat-label">READY FOR LIFTOFF</div>
+            </div>
+        </div>
+
+        <h2 class="feature-title">🎭 LEGENDARY MEMES 🎭</h2>
+        <div class="meme-zone">
+            <div class="meme-card" onclick="memeClick(this, '🚀💎')">
+                <div class="meme-placeholder">
+                    🚀💎
+                </div>
+                <div class="meme-text">DIAMOND ROCKET</div>
+                <p style="color: #00f5ff;">Click for MEGA BULLISH vibes!</p>
+            </div>
+
+            <div class="meme-card" onclick="memeClick(this, '🌙📈')">
+                <div class="meme-placeholder">
+                    🌙📈
+                </div>
+                <div class="meme-text">MOON CHARTS</div>
+                <p style="color: #ff00ff;">1000X GUARANTEED* (*not really)</p>
+            </div>
+
+            <div class="meme-card" onclick="memeClick(this, '💪🦍')">
+                <div class="meme-placeholder">
+                    💪🦍
+                </div>
+                <div class="meme-text">APE STRONG</div>
+                <p style="color: #ffff00;">APES TOGETHER!</p>
+            </div>
+
+            <div class="meme-card" onclick="memeClick(this, '🔥💰')">
+                <div class="meme-placeholder">
+                    🔥💰
+                </div>
+                <div class="meme-text">MONEY PRINTER</div>
+                <p style="color: #00ff00;">BRRRRRRR GO BRRRRR</p>
+            </div>
+
+            <div class="meme-card" onclick="memeClick(this, '🎰🎲')">
+                <div class="meme-placeholder">
+                    🎰🎲
+                </div>
+                <div class="meme-text">DEGEN MODE</div>
+                <p style="color: #00f5ff;">YOLO INTO EXPL!</p>
+            </div>
+
+            <div class="meme-card" onclick="memeClick(this, '😎🏆')">
+                <div class="meme-placeholder">
+                    😎🏆
+                </div>
+                <div class="meme-text">WINNER VIBES</div>
+                <p style="color: #ff00ff;">NGMI vs WAGMI</p>
+            </div>
+        </div> -->
+
+        <div class="footer">
+            <div style="font-size: 48px; margin-bottom: 20px;">COMMUNITY</div>
+            <div class="social-links">
+                <a href="#">🐦</a>
+                <a href="#">📱</a>
+                <a href="#">💬</a>
+                <a href="#">🎮</a>
+            </div>
+            <p style="font-size: 20px; margin-top: 30px;">EXPL.ONE - Not Financial Advice | DYOR | WAGMI 🚀</p>
+            <p style="font-size: 14px; margin-top: 20px; color: #666;">This website is for entertainment purposes. Do your own research.</p>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Open PUMP IT modal
+        function openPumpModal(e) {
+            e.preventDefault();
+            document.getElementById('pumpModal').style.display = 'flex';
+        }
+
+        // Close PUMP IT modal
+        function closePumpModal() {
+            document.getElementById('pumpModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('pumpModal');
+            if (event.target == modal) {
+                closePumpModal();
+            }
+        }
+
+        // Pump a coin - opens Twitter with pre-filled text
+        function pumpCoin(coin) {
+            const tweetText = `We are PUMPING ${coin} on expl.one 🚀🔥
+
+Something HUGE is on the way, get ready to be blown away! 🤯💎
+
+expl.one 🚀
+
+#${coin} #EXPLtheONE`;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.open(twitterUrl, '_blank');
+            closePumpModal();
+        }
+
+        // Show HODL GIF overlay
+        function showHodlGif(e) {
+            e.preventDefault();
+            const overlay = document.getElementById('hodlOverlay');
+            overlay.classList.add('active');
+            overlay.style.display = 'block';
+            
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 100);
+            }, 3000);
+        }
+
+        // Meme card interactions
+        function memeClick(card, emoji) {
+            // Create explosion effect
+            const explosion = document.createElement('div');
+            explosion.className = 'explosion';
+            explosion.textContent = emoji;
+            const rect = card.getBoundingClientRect();
+            explosion.style.left = (rect.left + rect.width / 2) + 'px';
+            explosion.style.top = (rect.top + rect.height / 2) + 'px';
+            document.body.appendChild(explosion);
+            
+            setTimeout(() => explosion.remove(), 1000);
+            
+            // Random hype messages
+            const messages = [
+                'TO THE MOON! 🚀',
+                'DIAMOND HANDS! 💎',
+                'LFG!!! 🔥',
+                'WAGMI! 🌙',
+                'BULLISH! 📈',
+                'HODL! 💪',
+                'GM! ☀️',
+                'LFGGGG! 🚀🚀🚀'
+            ];
+            
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            alert(message);
+            
+            // Add shake effect
+            card.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                card.style.animation = '';
+            }, 500);
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0) rotate(0deg); }
+                25% { transform: translateX(-10px) rotate(-5deg); }
+                75% { transform: translateX(10px) rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Random rockets flying across screen
+        setInterval(() => {
+            const rocket = document.createElement('div');
+            rocket.className = 'rocket';
+            rocket.textContent = '🚀';
+            rocket.style.left = '-60px';
+            rocket.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(rocket);
+            
+            setTimeout(() => rocket.remove(), 3000);
+        }, 5000);
+
+        // Add random emoji rain
+        setInterval(() => {
+            const emojis = ['💎', '🚀', '🌙', '💰', '🔥', '📈'];
+            const emoji = document.createElement('div');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.position = 'fixed';
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.top = '-50px';
+            emoji.style.fontSize = '40px';
+            emoji.style.pointerEvents = 'none';
+            emoji.style.zIndex = '9999';
+            emoji.style.animation = 'fall 5s linear';
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => emoji.remove(), 5000);
+        }, 3000);
+
+        // Fall animation for emoji rain
+        const fallStyle = document.createElement('style');
+        fallStyle.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(${window.innerHeight + 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(fallStyle);
+    </script>
+</body>
+</html>
