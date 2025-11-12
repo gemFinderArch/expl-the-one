@@ -725,18 +725,6 @@ expl.one 🚀
             setTimeout(() => rocket.remove(), 3000);
         }, 5000);
 
-        // Rocket animation on ANY click (for fun on coming soon page!)
-        document.addEventListener('click', (e) => {
-            const rocket = document.createElement('div');
-            rocket.className = 'rocket';
-            rocket.textContent = '🚀';
-            rocket.style.left = e.clientX + 'px';
-            rocket.style.top = e.clientY + 'px';
-            document.body.appendChild(rocket);
-            
-            setTimeout(() => rocket.remove(), 3000);
-        });
-
         /* ========================================
            FUTURE FEATURE: Coin Logo & Meme Emoji Rain
            This will be used with actual coin logos and meme graphics
