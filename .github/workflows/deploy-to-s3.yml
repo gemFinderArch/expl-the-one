@@ -12,17 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-    
-    - name: Install MkDocs Material
-      run: pip install mkdocs-material
-    
-    - name: Build documentation
-      run: mkdocs build
-    
     - name: Set up AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
